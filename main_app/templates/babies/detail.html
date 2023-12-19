@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="row">
+	<div class="col s6">
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title">{{ baby.name }}</span>
+				<p>Parent User: {{baby.user}}</p>
+				<p>Date of Birth: {{ baby.date_of_birth }}</p>
+				<p>Age (months): Functionality Incoming</p>
+				<p>Height (cm): {{ baby.height }}</p>
+				<p>Weight (lb): {{ baby.weight }}</p>
+			</div>
+			<div class="card-action">
+				<a href="{% url 'baby_update' baby.id %}">Edit</a>
+				<a href="{% url 'baby_delete' baby.id %}">Remove</a>
+			</div>
+		</div>
+{% for photo in baby.photo_set.all %}
+<img src="{{photo.url}}" alt="baby photo" class="responsive-img card panel">
+{% empty %}
+<div class="card-panel teal-text center align">No Photos Uploaded</div> {% endfor %}
+
+<form action="{% url 'add_photo' baby.id %}" enctype="multipart/form-data" method="POST">
+	{% csrf_token %}
+	<input type="file" name="photo-file">
+	<br>
+	<br>
+	<button type="submit" class="btn">Upload Photo</button>
+</form>
+</div>
+<!-- New Markup Below -->
+	<div class="col s6">
+		<form action="{% url 'add_feeding' baby.id %}" method="POST">
+			{% csrf_token %}
+			{{ feeding_form.as_p }}
+			<button type="submit" class="btn">Add Feeding</button>
+		</form>
+
+		<table class="striped">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Meal</th>
+					<th>Time</th>
+					<th>Amount (ml)</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for feeding in baby.feeding_set.all %}
+				<tr>
+					<td>{{feeding.date}}</td>
+					<td>{{feeding.get_meal_display}}</td>
+					<td>{{feeding.time}}</td>
+					<td>{{feeding.amount}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<h3 class="page-title">Playdates:</h3>
+		{% if baby.playdate.count%}
+		{% for playdate in baby.playdate.all %}
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title">
+					Playdate at {{playdate.location}}
+				</span>
+				<p>Date: {{playdate.date}}</p>
+				<p>Time: {{playdate.time}}</p>
+			</div>
+		</div>
+		{% endfor %}
+		{% else %}
+		<h5>No playdates!</h5>
+		{% endif %}
+	</div>
+	<div class="col s6">
+		<h3 class="page-title">Available Playdates</h3>
+		{% if playdates.count %}
+		{% for playdate in playdates.all%}
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title">
+					Playdate at {{playdate.location}}
+				</span>
+				<p>Date: {{playdate.date}}</p>
+				<p>Time: {{playdate.time}}</p>
+			</div>
+			<div class="card-action">
+				<form action="{% url 'assoc_playdate' baby.id playdate.id %} " method="POST">
+					{% csrf_token %}
+					<button type="submit" class="btn">Add</button>
+				</form>
+			</div>
+		</div>
+		{% endfor %}
+		{% else %}
+		<h5>Baby already has all playdates available!</h5>
+		{% endif %}
+	</div>
+</div>
+
+
+<script>
+
+	const timer = document.getElementById('id_time')
+	M.Timepicker.init(timer, {
+		twelveHour: false,
+	})
+
+	const select = document.querySelector('select');
+	M.FormSelect.init(select, {})
+
+	const dateEl = document.getElementById('id_date');
+
+	// M is Materialize's global variable
+	M.Datepicker.init(dateEl, {
+		format: 'yyyy-mm-dd',
+		defaultDate: new Date(),
+		setDefaultDate: true,
+		autoClose: true
+	});
+</script>
+
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if object %}
+<h1 class="page-title">Edit <span class="teal-text">{{object.name}}</span></h1>
+{% else %}
+<h1 class="page-title">Add a Playdate:</h1>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+</form>
+
+<script>
+    const timer = document.getElementById('id_time')
+	M.Timepicker.init(timer, {
+        twelveHour: false,
+    })
+
+	const dateEl = document.getElementById('id_date');
+	// M is Materialize's global variable
+	M.Datepicker.init(dateEl, {
+		format: 'yyyy-mm-dd',
+		defaultDate: new Date(),
+		setDefaultDate: true,
+		autoClose: true
+	});
+</script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if object %}
+<h1 class="page-title">Edit <span>{{ object.name }}</span></h1>
+{% else %}
+<h1 class="page-title">Add Baby Profile</h1>
+{% endif %}
+
+<form action="" method="Post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+	<br>
+    <button type="submit" class="btn">Submit</button>
+</form>
+
+<script>
+	const dateEl = document.getElementById('id_date_of_birth');
+	// M is Materialize's global variable
+	M.Datepicker.init(dateEl, {
+		format: 'yyyy-mm-dd',
+		defaultDate: new Date(),
+		setDefaultDate: true,
+		autoClose: true
+	});
+</script>
+
+<br>
+
+{% endblock content %}
