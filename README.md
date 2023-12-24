@@ -4,21 +4,21 @@
 This app was built in order to assist parents of infants with managing their feeding times and with organizing and attending play dates.
 
 ## About
-Introducing Little Life Log, a revolutionary application 
-that redefines the way parents monitor and celebrate their 
-child's journey from infancy to childhood. This innovative 
-tool goes beyond traditional tracking, offering a 
-comprehensive platform that not only records crucial 
-developmental milestones but also facilitates seamless 
+Introducing Little Life Log, a revolutionary application
+that redefines the way parents monitor and celebrate their
+child's journey from infancy to childhood. This innovative
+tool goes beyond traditional tracking, offering a
+comprehensive platform that not only records crucial
+developmental milestones but also facilitates seamless
 coordination for playdates with fellow parents.
 
-With Little Life Log, stay informed about your child's 
-growth and development while effortlessly connecting with 
-a supportive community of like-minded parents. Embrace 
-the convenience of a centralized hub that empowers you to 
-navigate the exciting stages of parenthood with ease and 
-joy. Welcome to a new era of parenting, where Little Life 
-Log becomes your indispensable companion in nurturing your 
+With Little Life Log, stay informed about your child's
+growth and development while effortlessly connecting with
+a supportive community of like-minded parents. Embrace
+the convenience of a centralized hub that empowers you to
+navigate the exciting stages of parenthood with ease and
+joy. Welcome to a new era of parenting, where Little Life
+Log becomes your indispensable companion in nurturing your
 child's flourishing life.
 
 ## Screenshots
@@ -37,7 +37,7 @@ child's flourishing life.
 * Materialize
 
 ## Getting Started
-* App: [Link to App](localhost.8000)
+* App: [Link to App](https://little-life-log.fly.dev/)
 * Pitch Deck: [Link to Pitch Deck](https://docs.google.com/presentation/d/1H0PCTU6MeHOXgG13aq01Lj6Zj8XVTenbEkKiIGvuq2o/edit?usp=sharing)
 * Trello: [Link to Trello](https://trello.com/invite/b/LBcG06lK/ATTId642b72666501187615fc9ff7f428d51F36EDE96/project-4-sei-9-25)
 * Wireframe: [Link to Wireframe](https://www.figma.com/file/S20d5TOL6BoRAvBMqp34xc/Wireframe-Baby-Schedule?type=design&node-id=0%3A1&mode=design&t=ahyQUJiEBuiI0udp-1)
